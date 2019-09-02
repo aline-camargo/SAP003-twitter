@@ -1,0 +1,13 @@
+*{
+  text-align: center;
+}
+body{
+  background-color: #a7f5f5;
+}
+.texto{
+  resize: none;
+  width: 500px;
+  height: 100px;
+  /* position: relative;
+  margin: 25px 50px 75px 700px;
+} */
