@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+html,
+body {
+  height: 100%;
+  background-color: #CCCED9;
+  text-align: center;
+}
+#page-title{
+  background-color: #F25922;
+  width: 100%;
+  color: white;
+}
+.profile{
+  background-color: #F2B199;
+  height: 100%;
+  float: left;
+  margin: 1.5% 0 1.5% 1.5%;
+  width: 30%;
+}
+img{
+  width: 50%;
+  height: auto;
+  padding: 20px;
+  border-radius: 40%;
+}
+.text{
+  resize: none;
+  overflow-y: hidden;
+  width: 500px;
+  height: 90px;
+  font-size: x-large;
+  border: none;
+}
+#countdown{
+  margin: 10px auto auto 51%;
+}
+.messages{
+  float: right;
+  width: 63%;
+  margin: 2% 3% 0 0;
+  /* text-align: right; */
+}
