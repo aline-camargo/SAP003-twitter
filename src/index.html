@@ -2,20 +2,31 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
     <title>Twitter</title>
-    <link rel="stylesheet" href="style.css"/>
   </head>
-  <body>
+  <body class="container">
     <header>
-      <h1>Twitter</h1>
+      <h1 class="page-title">Twitter</h1>
     </header>
-    <main>
-      <section>
-        <textarea name="texto" class="input texto" id="texto"></textarea><br>
-        <button type="button" name="button" id="tweet" class="tweet">Tweet</button>
-        <p id="tweeted"></p>
-      </section>
-    </main>
-    <script src="index.js"></script>
+    <div class="main-container">
+      <aside class="profile">
+        <img src="Lab.jpg" alt="">
+        <div class="description">
+          <h3 class="name">Laboratória Brasil</h3>
+          <p class="message">Oferecemos a mulheres uma carreira em tecnologia para que transformem
+            o próprio futuro e o das empresas que as recebem.</p>
+        </div>
+      </aside>
+      <main class="messages">
+        <textarea name="text" id="text" class="text" rows="4"></textarea>
+        <div class="under-text">
+          <button type="button" name="send" id="send" class="send-button" disabled>Tweet</button>
+          <p id="countdown" class="countdown">140</p>
+        </div>
+      </main>
+    </div>
+    <div name="tweets" id="tweets"></div>
+    <script type="text/javascript" src="index.js"></script>
   </body>
 </html>
