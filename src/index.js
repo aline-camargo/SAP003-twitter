@@ -4,20 +4,23 @@ for (element of getStorage){
   sendTweet(element);
 }
 
-function sendTweet(){
-  typedTweet = document.getElementById('text').value;
-  if(typedTweet === ""){return}
-  let date = new Date().toTimeString().substring(0,5);
-  let text = typedTweet.replace(/\n/, "<br>");
+function sendTweet(tweet){
+  if(tweet === ""){return};
+  if(typeof tweet == "string"){
+    const date = new Date().toTimeString().substring(0,5);
+    const text = tweet.replace(/\n/, "<br>");
+    tweet = [date, text];
+  }
   document.getElementById("tweets").innerHTML =
-    `<p class="tweets">[${date}] ${text}</p>` + document.getElementById("tweets").innerHTML
-  storage.push(text);
+    `<p class="tweets">[${tweet[0]}] ${tweet[1]}</p>` + document.getElementById("tweets").innerHTML
+  storage.push(tweet);
   localStorage.setItem("yourTweet", JSON.stringify(storage));
 }
 
 function sendTweetEvent() {
-  sendTweet();
-  //document.getElementById('text').value = "";
+  typedTweet = document.getElementById('text').value;
+  sendTweet(typedTweet);
+  document.getElementById('text').value = "";
   document.getElementById('countdown').innerHTML = MAX_LENGTH;
   document.getElementById('countdown').style.color = "black";
 }
