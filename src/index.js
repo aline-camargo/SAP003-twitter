@@ -1,7 +1,14 @@
 const storage = [];
-const getStorage = JSON.parse(localStorage.getItem("yourTweet"));
-for (element of getStorage){
-  sendTweet(element);
+
+const loadTweets = () =>{
+  if (localStorage.getItem("yourTweet") === ""){
+    return
+  } else {
+    const getStorage = JSON.parse(localStorage.getItem("yourTweet"));
+    for (element of getStorage){
+      sendTweet(element);
+    }
+  }
 }
 
 function sendTweet(tweet){
@@ -52,5 +59,6 @@ function tweetLength() {
   linesCount > 4 ? document.getElementById("text").setAttribute("rows", linesCount) : document.getElementById("text").setAttribute("rows", 4);
 }
 
+window.addEventListener("load", loadTweets);
 document.getElementById("send").addEventListener("click", sendTweetEvent);
 document.getElementById("text").addEventListener("keyup", tweetLength);
