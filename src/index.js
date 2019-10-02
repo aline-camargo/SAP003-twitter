@@ -15,7 +15,8 @@ function sendTweet(tweet){
   if(tweet === ""){return};
   if(typeof tweet == "string"){
     const date = new Date().toTimeString().substring(0,5);
-    const text = tweet.replace(/\n/, "<br>");
+    const re = /\n/gi;
+    const text = tweet.replace(re, "<br>");
     tweet = [date, text];
   }
   document.getElementById("tweets").innerHTML =
@@ -56,7 +57,6 @@ function tweetLength() {
   lines.length > 3 ? document.getElementById("text").setAttribute("rows", lines.length) : document.getElementById("text").setAttribute("rows", 3);
 
   let linesCount = lines.reduce((accum, line) => accum + Math.max(Math.ceil(line.length/36), 1), 0);
-  console.log(linesCount);
   linesCount > 3 ? document.getElementById("text").setAttribute("rows", linesCount) : document.getElementById("text").setAttribute("rows", 3);
 }
 
