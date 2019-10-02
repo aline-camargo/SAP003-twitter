@@ -53,10 +53,11 @@ function tweetLength() {
 
   //aumentar textarea quando há mais linhas de texto.
   let lines = document.getElementById("text").value.split("\n");
-  lines.length > 4 ? document.getElementById("text").setAttribute("rows", lines.length) : document.getElementById("text").setAttribute("rows", 4);
+  lines.length > 3 ? document.getElementById("text").setAttribute("rows", lines.length) : document.getElementById("text").setAttribute("rows", 3);
 
-  let linesCount = lines.reduce((accum, line) => accum + Math.max(Math.ceil(line.length/45), 1), 0);
-  linesCount > 4 ? document.getElementById("text").setAttribute("rows", linesCount) : document.getElementById("text").setAttribute("rows", 4);
+  let linesCount = lines.reduce((accum, line) => accum + Math.max(Math.ceil(line.length/36), 1), 0);
+  console.log(linesCount);
+  linesCount > 3 ? document.getElementById("text").setAttribute("rows", linesCount) : document.getElementById("text").setAttribute("rows", 3);
 }
 
 window.addEventListener("load", loadTweets);
