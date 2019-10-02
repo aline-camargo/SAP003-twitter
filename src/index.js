@@ -15,7 +15,7 @@ function sendTweet(tweet){
   if(tweet === ""){return};
   if(typeof tweet == "string"){
     const date = new Date().toTimeString().substring(0,5);
-    const re = /\n/gi;
+    const re = /\n/g;
     const text = tweet.replace(re, "<br>");
     tweet = [date, text];
   }
