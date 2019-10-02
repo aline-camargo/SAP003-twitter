@@ -1,6 +1,4 @@
-html,
-body {
-  background-image: url(autumn-bg.png);
+body{
   background-repeat: no-repeat;
   background-attachment: fixed;
   text-align: center;
@@ -114,17 +112,55 @@ body {
   border-radius: 6px;
   font-size: large;
 }
+@media (min-width: 1281px){
+  body {
+    background-image: url(autumn-bg.png);
+  }
+}
 @media (max-width: 1280px){
+  body{
+    background-image: url(autumn-bg-mobile.jpg);
+    background-size: cover;
+  }
+  .page-title{
+    font-size: 370%;
+  }
+  .profile-picture{
+    max-width: 178px;
+  }
+  .name{
+    font-size: 258%;
+  }
+  .message{
+    font-size: 192%;
+  }
   .main-container{
     flex-direction: column;
   }
   .profile{
     width: 85%;
     align-self: center;
+    height: auto;
   }
   .messages{
     width: 85%;
     align-self: center;
     margin: 0;
+  }
+  .text{
+    font-size: 259%;
+  }
+  .send-button{
+    width: 159px;
+    height: 66px;
+    font-size: 257%;
+  }
+  .countdown{
+    height: 56px;
+    width: 108px;
+    font-size: 259%;
+  }
+  .tweets{
+    font-size: 210%;
   }
 }
