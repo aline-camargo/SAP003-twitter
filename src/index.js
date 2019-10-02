@@ -43,7 +43,7 @@ function tweetLength() {
 
   //Desabilita botão e muda cor do countdown.
   if (typedTweetLength === 0 || typedTweetLength > MAX_LENGTH){
-    document.getElementById("send").setAttribute("disabled", "disabled");
+    document.getElementById("send").setAttribute("disabled", "");
   } else if (typedTweetLength >= 120 && typedTweetLength <= 129){
     document.getElementById("countdown").style.color = "yellow";
   } else if (typedTweetLength >= 130) {
@@ -62,4 +62,5 @@ function tweetLength() {
 
 window.addEventListener("load", loadTweets);
 document.getElementById("send").addEventListener("click", sendTweetEvent);
+document.getElementById("send").addEventListener("click", tweetLength);
 document.getElementById("text").addEventListener("keyup", tweetLength);

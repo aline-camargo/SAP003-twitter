@@ -76,6 +76,7 @@ body {
   border-radius: 7%;
   font-weight: bold;
   margin-top: 2%;
+  transition-duration: 300ms;
 }
 .send-button:disabled{
   color: grey;
@@ -112,4 +113,18 @@ body {
   padding: 7px;
   border-radius: 6px;
   font-size: large;
+}
+@media (max-width: 1280px){
+  .main-container{
+    flex-direction: column;
+  }
+  .profile{
+    width: 85%;
+    align-self: center;
+  }
+  .messages{
+    width: 85%;
+    align-self: center;
+    margin: 0;
+  }
 }
