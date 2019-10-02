@@ -20,7 +20,7 @@ function sendTweet(tweet){
     tweet = [date, text];
   }
   document.getElementById("tweets").innerHTML =
-    `<p class="tweets">[${tweet[0]}] ${tweet[1]}</p>` + document.getElementById("tweets").innerHTML
+    `<p class="tweets">${tweet[1]}<br>-${tweet[0]}-</p>` + document.getElementById("tweets").innerHTML
   storage.push(tweet);
   localStorage.setItem("yourTweet", JSON.stringify(storage));
 }
