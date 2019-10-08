@@ -81,6 +81,10 @@ body{
   border: 1px solid gray;
   background-color: #e6ddcb;
 }
+.send-button:disabled:hover{
+  box-shadow: none;
+  cursor: not-allowed;
+}
 .send-button:hover{
   box-shadow: inset 2px 2px 8px white;
   cursor: pointer;
