@@ -17,10 +17,13 @@ function sendTweet(tweet){
     const date = new Date().toTimeString().substring(0,5);
     const re = /\n/g;
     const text = tweet.replace(re, "<br>");
-    tweet = [date, text];
+    tweet = {
+      date,
+      text
+    };
   }
   document.getElementById("tweets").innerHTML =
-    `<p class="tweets">${tweet[1]}<br>-${tweet[0]}-</p>` + document.getElementById("tweets").innerHTML
+    `<p class="tweets">${tweet.text}<br>-${tweet.date}-</p>` + document.getElementById("tweets").innerHTML
   storage.push(tweet);
   localStorage.setItem("yourTweet", JSON.stringify(storage));
 }
