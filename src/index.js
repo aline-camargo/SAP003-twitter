@@ -13,12 +13,16 @@ const loadTweets = () =>{
 }
 
 const deleteTweet = (event) =>{
-  const tweets = JSON.parse(localStorage.getItem("yourTweet"));
-  const id = event.target.parentElement.id;
-  const updatedTweets = tweets.filter((value) => value.id != id);
-  localStorage.setItem("yourTweet", JSON.stringify(updatedTweets));
-  document.getElementById(id).remove();
-}
+  if(confirm('Você deseja apagar esse tweet?')) { 
+    const tweets = JSON.parse(localStorage.getItem("yourTweet"));
+    const id = event.target.parentElement.id;
+    const updatedTweets = tweets.filter((value) => value.id != id);
+    localStorage.setItem("yourTweet", JSON.stringify(updatedTweets));
+    document.getElementById(id).remove();
+  } else {
+    return
+  }
+};
 
 function sendTweet(tweet){
   if(tweet === ""){return}
