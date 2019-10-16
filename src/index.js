@@ -17,7 +17,7 @@ const deleteTweet = (event) =>{
   const id = event.target.parentElement.id;
   const updatedTweets = tweets.filter((value) => value.id != id);
   localStorage.setItem("yourTweet", JSON.stringify(updatedTweets));
-  document.getElementById(id).style.display = 'none';
+  document.getElementById(id).remove();
 }
 
 function sendTweet(tweet){
