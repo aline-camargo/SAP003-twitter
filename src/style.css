@@ -4,10 +4,12 @@ body{
   text-align: center;
   margin: 0;
 }
+
 .container{
   display: flex;
   flex-direction: column;
 }
+
 .page-title{
   font-family: 'Righteous', cursive;
   background-color: #F25922;
@@ -16,20 +18,23 @@ body{
   height: 69%;
   font-size: 178%;
 }
+
 .main-container{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
+
 .profile{
   background-color: #F2B199;
-  height: 140px;
+  height: 148px;
   display: flex;
   flex-direction: row;
   margin: 1.5% 0 1.5% 1.5%;
   width: 35%;
   border-radius: 6px;
 }
+
 .profile-picture{
   width: 63%;
   height: auto;
@@ -38,33 +43,40 @@ body{
   align-self: center;
   max-width: 107px;
 }
+
 .name{
   font-family: 'Righteous', cursive;
   margin-bottom: 0;
 }
+
 .description{
   display: flex;
   flex-direction: column;
 }
+
 .message{
   margin-top: 2%;
   margin-right: 5%;
   font-family: 'Raleway', sans-serif;
 }
+
 .text{
   resize: none;
   overflow-y: hidden;
   width: 100%;
+  padding: 8px;
   font-size: x-large;
   border: none;
   border-radius: 6px;
   font-family: 'Raleway', sans-serif;
 }
+
 .under-text{
   display: flex;
   justify-content: space-between;
   height: 26%;
 }
+
 .send-button{
   width: 70px;
   height: 31px;
@@ -76,19 +88,23 @@ body{
   margin-top: 2%;
   transition-duration: 300ms;
 }
+
 .send-button:disabled{
   color: grey;
   border: 1px solid gray;
   background-color: #e6ddcb;
 }
+
 .send-button:disabled:hover{
   box-shadow: none;
   cursor: not-allowed;
 }
+
 .send-button:hover{
   box-shadow: inset 2px 2px 8px white;
   cursor: pointer;
 }
+
 .countdown{
   margin-top: 2%;
   background-color: #DDA67C;
@@ -99,6 +115,7 @@ body{
   border: 1px solid #F25922;
   font-family: 'Righteous', cursive;
 }
+
 .messages{
   width: 35%;
   height: 77%;
@@ -106,6 +123,7 @@ body{
   display: flex;
   flex-direction: column;
 }
+
 .tweets{
   text-align: left;
   background-color: white;
@@ -115,56 +133,83 @@ body{
   padding: 7px;
   border-radius: 6px;
   font-size: large;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
+.delete{
+  text-decoration: none;
+  color: inherit;
+}
+
+.delete:hover{
+  color: red;
+  cursor: pointer;
+}
+
 @media (min-width: 1281px){
   body {
-    background-image: url(autumn-bg.png);
+    background-image: url(./images/autumn-bg.png);
   }
 }
+
 @media (max-width: 1280px){
   body{
-    background-image: url(autumn-bg-mobile.jpg);
+    background-image: url(./images/autumn-bg-mobile.jpg);
     background-size: cover;
   }
+
   .page-title{
     font-size: 370%;
   }
+
   .profile-picture{
     max-width: 178px;
   }
+
   .name{
     font-size: 258%;
   }
+
   .message{
     font-size: 192%;
   }
+
   .main-container{
     flex-direction: column;
   }
+
   .profile{
     width: 85%;
     align-self: center;
     height: auto;
   }
+
   .messages{
     width: 85%;
     align-self: center;
     margin: 0;
   }
+
   .text{
     font-size: 259%;
   }
+
   .send-button{
     width: 159px;
     height: 66px;
     font-size: 257%;
   }
+
   .countdown{
     height: 56px;
     width: 108px;
     font-size: 259%;
   }
+
   .tweets{
     font-size: 210%;
   }
+
 }
