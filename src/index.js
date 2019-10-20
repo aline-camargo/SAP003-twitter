@@ -50,7 +50,7 @@ function sendTweet(tweet){
   localStorage.setItem("userTweets", JSON.stringify(storage));
 
   const tweetTemplate = `
-  <p class="tweets" id="${tweet.id}"><span>${tweet.text}<br>-${tweet.date}-</span>
+  <p class="tweets" id="${tweet.id}"><span class="tweet-text">${tweet.text}<br>-${tweet.date}-</span>
   <span class="delete">X</span></p>`
   tweetsContainer.insertAdjacentHTML('afterbegin', tweetTemplate);
 }
