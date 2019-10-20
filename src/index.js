@@ -1,92 +1,98 @@
+// Variáveis globais.
 const storage = [];
 const MAX_LENGTH = 140;
+const countdown = document.getElementById("countdown");
+const textArea = document.getElementById('text');
+const tweetsContainer = document.getElementById("tweets");
 
 const loadTweets = () =>{
-  if (localStorage.getItem("yourTweet") === ""){
+  if (localStorage.getItem("userTweets") === ""){
     return
   } else {
-    const getStorage = JSON.parse(localStorage.getItem("yourTweet"));
+    const getStorage = JSON.parse(localStorage.getItem("userTweets"));
     for (let element of getStorage){
       sendTweet(element);
     }
   }
 }
 
-const deleteTweet = (event) =>{
+const deleteTweet = (deleteParent) =>{  
   if(confirm('Você deseja apagar esse tweet?')) { 
-    const tweets = JSON.parse(localStorage.getItem("yourTweet"));
-    const id = event.target.parentElement.id;
-    const updatedTweets = tweets.filter((value) => value.id != id);
-    localStorage.setItem("yourTweet", JSON.stringify(updatedTweets));
+    // Mantém no localStorage apenas os tweets cujo id é != do clicado.
+    const tweets = JSON.parse(localStorage.getItem("userTweets"));
+    const id = deleteParent.id;
+    const updatedTweets = tweets.filter((tweet) => tweet.id != id);
+    localStorage.setItem("userTweets", JSON.stringify(updatedTweets));
     document.getElementById(id).remove();
   } else {
     return
   }
 };
 
+// Ouvidor de evento botões de delete.
+tweetsContainer.addEventListener("click", e => {
+  if(e.target.className === "delete") {
+    deleteTweet(e.target.parentElement);
+  }
+});
+
 function sendTweet(tweet){
   if(tweet === ""){return}
-  if(typeof tweet == "string"){
-    const date = new Date().toLocaleString('pt-BR').slice(0, 16);
-    const text = tweet.replace(/\n/g, "<br>");
+  if(typeof tweet == "string") {
     tweet = {
       id: Date.now(),
-      date,
-      text
+      date: new Date().toLocaleString('pt-BR').slice(0, 16),
+      text: tweet.replace(/\n/g, "<br>"),
     };
   }
-  storage.push(tweet);
-  localStorage.setItem("yourTweet", JSON.stringify(storage));
-  document.getElementById("tweets").innerHTML =
-    `<p class="tweets" id="${tweet.id}"><span>${tweet.text}<br>-${tweet.date}-</span>\
-      <span class="delete">X</span></p>` + document.getElementById("tweets").innerHTML
-  document.querySelectorAll(".delete").forEach((cls) => {
-    cls.addEventListener("click", e => deleteTweet(e));
-  });
-  // const xuxu = document.querySelectorAll(".delete");
-  // Array.from(xuxu).map(tweet => tweet.addEventListener("click", (e) =>{
-  //   const tweets = JSON.parse(localStorage.getItem("yourTweet"));
-  //   const id = e.target.parentElement.getAttribute("id");
-  //   const deleting = (value) => value.id != id;
-  //   const updatedTweets = tweets.filter(deleting);
-  //   localStorage.setItem("yourTweet", JSON.stringify(updatedTweets));
-  // }));
-}
 
-function sendTweetEvent() {
-  const typedTweet = document.getElementById('text').value;
-  sendTweet(typedTweet);
-  document.getElementById('text').value = "";
-  document.getElementById('countdown').innerHTML = MAX_LENGTH;
-  document.getElementById('countdown').style.color = "black";
+  storage.push(tweet);
+  localStorage.setItem("userTweets", JSON.stringify(storage));
+
+  const tweetTemplate = `
+  <p class="tweets" id="${tweet.id}"><span>${tweet.text}<br>-${tweet.date}-</span>
+  <span class="delete">X</span></p>`
+  tweetsContainer.insertAdjacentHTML('afterbegin', tweetTemplate);
 }
 
 function tweetLength() {
-  //Conta caracteres decrescente e abilita botão.
-  const typedTweetLength = document.getElementById('text').value.length;
-  document.getElementById("send").removeAttribute("disabled");
-  document.getElementById('countdown').innerHTML = MAX_LENGTH - typedTweetLength;
+  
+  const typedTweetLength = textArea.value.length;
 
-  //Desabilita botão e muda cor do countdown.
-  if (typedTweetLength === 0 || typedTweetLength > MAX_LENGTH){
-    document.getElementById("send").setAttribute("disabled", "");
-  } else if (typedTweetLength >= 120 && typedTweetLength <= 129){
-    document.getElementById("countdown").style.color = "yellow";
-  } else if (typedTweetLength >= 130) {
-    document.getElementById("countdown").style.color = "red";
+  //Atualiza contador com caracteres decrescentes.
+  countdown.innerHTML = MAX_LENGTH - typedTweetLength;
+
+  //Habilita/desabilita botão 'tweet'.
+  if (typedTweetLength > 0 && typedTweetLength < 141) {
+    document.getElementById("send").removeAttribute("disabled");
   } else {
-    document.getElementById("countdown").style.color = "black";
+    document.getElementById("send").setAttribute("disabled", "");
+  }
+
+  // Muda cor do countdown.
+  if (typedTweetLength >= 120 && typedTweetLength <= 129) {
+    countdown.style.color = "yellow";
+  } else if (typedTweetLength >= 130) {
+    countdown.style.color = "red";
+  } else if (typedTweetLength >= 0 && typedTweetLength <= 119){
+    countdown.style.color = "black";
   }
 
   //aumentar textarea quando há mais linhas de texto.
-  let lines = document.getElementById("text").value.split("\n");
-  lines.length > 3 ? document.getElementById("text").setAttribute("rows", lines.length) : document.getElementById("text").setAttribute("rows", 3);
+  const lines = textArea.value.split("\n");
+  lines.length > 3 ? textArea.setAttribute("rows", lines.length) : textArea.setAttribute("rows", 3);
 
-  let linesCount = lines.reduce((accum, line) => accum + Math.max(Math.ceil(line.length/36), 1), 0);
-  linesCount > 3 ? document.getElementById("text").setAttribute("rows", linesCount) : document.getElementById("text").setAttribute("rows", 3);
+  const linesCount = lines.reduce((accum, line) => accum + Math.max(Math.ceil(line.length/36), 1), 0);
+  linesCount > 3 ? textArea.setAttribute("rows", linesCount) : textArea.setAttribute("rows", 3);
+
+}
+
+function sendTweetEvent() {
+  sendTweet(textArea.value);
+  textArea.value = "";
+  tweetLength()
 }
 
 window.onload = loadTweets;
 document.getElementById("send").addEventListener("click", sendTweetEvent);
-document.getElementById("send").addEventListener("click", tweetLength);
-document.getElementById("text").addEventListener("keyup", tweetLength);
+textArea.addEventListener("keyup", tweetLength);
