@@ -71,7 +71,6 @@ function tweetLength() {
 
   // Muda cor do countdown.
   if (typedTweetLength >= 120 && typedTweetLength <= 129) {
-    console.log(countdown.classList);
     countdown.className = "countdown almost-past-count";
   } else if (typedTweetLength >= 130) {
     countdown.className = "countdown past-count"
