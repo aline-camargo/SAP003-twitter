@@ -71,11 +71,12 @@ function tweetLength() {
 
   // Muda cor do countdown.
   if (typedTweetLength >= 120 && typedTweetLength <= 129) {
-    countdown.style.color = "yellow";
+    console.log(countdown.classList);
+    countdown.className = "countdown almost-past-count";
   } else if (typedTweetLength >= 130) {
-    countdown.style.color = "red";
+    countdown.className = "countdown past-count"
   } else if (typedTweetLength >= 0 && typedTweetLength <= 119){
-    countdown.style.color = "black";
+    countdown.className = "countdown on-count"
   }
 
   //aumentar textarea quando há mais linhas de texto.

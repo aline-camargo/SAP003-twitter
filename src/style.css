@@ -152,6 +152,17 @@ body{
   cursor: pointer;
 }
 
+.almost-past-count {
+  color: yellow;
+}
+
+.on-count {
+  color: black;
+}
+
+.past-count {
+  color: red;
+}
 @media (min-width: 1281px){
   body {
     background-image: url(./images/autumn-bg.png);
