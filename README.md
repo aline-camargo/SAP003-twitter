@@ -1,4 +1,4 @@
-#Desafio extra: twitter
+# Desafio extra: twitter
 
 Neste desafio, vamos replicar o feed de notícias do Twitter. Para tanto, seguiremos um fluxo de versões que a guiarão para se concentrar mais eficientemente :)
 
