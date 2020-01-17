@@ -1,4 +1,4 @@
-#Desafio extra: twitter
+# Desafio extra: twitter
 
 Neste desafio, vamos replicar o feed de notícias do Twitter. Para tanto, seguiremos um fluxo de versões que a guiarão para se concentrar mais eficientemente :)
 
@@ -6,7 +6,7 @@ Você pode adaptar o design como quiser, mas não demore para definir as cores o
 
 ![exemplo twitter](https://media.giphy.com/media/3ov9jP4RIGQCUQOScg/giphy.gif)
 
-## Versão 0.0.1
+## Versão 0.0.1 &#x2611;
 
 - Crie um formulário que permita inserir um texto e um botão para "twittar".
 - Adicione um evento de click ao botão ou de submit no formulário.
@@ -14,27 +14,32 @@ Você pode adaptar o design como quiser, mas não demore para definir as cores o
 - Adicione o texto ao HTML.
 - Salvar os tweets no `localStorage`.
 
-## Versão 0.0.2
+## Versão 0.0.2 &#x2611;
 
 - Não inserir texto vazio (desativar o botão "twittar").
 - Conte o número de caracteres de forma regressiva.
 
-## Versão 0.0.3
+## Versão 0.0.3 &#x2611;
 
 - Se você passar os 140 caracteres, desative o botão.
 - Se você passar os 120 caracteres, mostre o contador com outra cor.
 - Se você passar os 130 caracteres, mostre o contador com outra cor.
 - Se você passar os 140 caracteres, mostre o contador em negativo.
 
-## Versão 0.0.4
+## Versão 0.0.4 &#x2611;
 
 - Ao pressionar enter (/n) aumente a área de texto de acordo com o tamanho do texto.
 
-## Versão 0.0.5 (Hacker edition)
+## Versão 0.0.5 (Hacker edition) &#x2611;
 
 - Se o número de caracteres digitados (sem dar um "enter") exceder o tamanho da área de texto por padrão, mais uma linha deverá ser adicionada para que a rolagem não apareça. (Se aplicável)
 
-## Versão 0.0.6 (Hacker edition)
+## Versão 0.0.6 (Hacker edition) &#x2611;
 
 - Adicione a hora em que o tweet foi publicado no formato de 24 horas hh:mm.
 - Nota: Para formatar a data e a hora, você pode criar sua própria função com métodos nativos do JS ou usar uma biblioteca como `moment.js`.
+
+
+# Versão Final
+
+![screenshot](./src/images/screenshot.png)
